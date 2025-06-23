@@ -2,11 +2,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head th:replace="~{layout/plantilla :: head}"/>
 
+    <head th:replace="~{layout/plantilla :: head}"/>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
-        
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                    <th scope="col">Accion</th>>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>
+                        <button type="button" class="btn btn-danger">Borrar</button>
+                        <button type="button" class="btn btn-warning">modificar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>
+                        <button type="button" class="btn btn-danger">Borrar</button>
+                        <button type="button" class="btn btn-warning">modificar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                    <td>
+                        <button type="button" class="btn btn-danger">Borrar</button>
+                        <button type="button" class="btn btn-warning">modificar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>

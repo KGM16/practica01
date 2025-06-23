@@ -6,4 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : Jun 23, 2025, 11:29:06 AM
     Author     : kgomezm
 */
-
+body {
+    background-color: rgb(82, 69, 53);
+    font-family: serif;
+}
