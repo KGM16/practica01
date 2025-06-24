@@ -18,36 +18,36 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/categoria")
+@RequestMapping("/arbol")
 public class ArbolController {
 
     @Autowired
-    private ArbolService categoriaService;
+    private ArbolService arbolService;
 
     @GetMapping("/listado")
     public String listado(Model model) {
-        var lista = categoriaService.getArbols(false);
-        model.addAttribute("categorias", lista);
+        var lista = arbolService.getArbols(false);
+        model.addAttribute("arbols", lista);
         model.addAttribute("totalArbols", lista.size());
-        return "/categoria/listado";
+        return "/arbol/listado";
     }
 
     @PostMapping("/guardar")
-    public String guardar(Arbol categoria, @RequestParam("imagenFile") MultipartFile imagenFile) {
-        categoriaService.save(categoria);
-        return "redirect:/categoria/listado";
+    public String guardar(Arbol arbol, @RequestParam("imagenFile") MultipartFile imagenFile) {
+        arbolService.save(arbol);
+        return "redirect:/arbol/listado";
     }
 
     @GetMapping("/eliminar/{idArbol}")
-    public String eliminar(Arbol categoria) {
-        categoriaService.delete(categoria);
-        return "redirect:/categoria/listado";
+    public String eliminar(Arbol arbol) {
+        arbolService.delete(arbol);
+        return "redirect:/arbol/listado";
     }
     
     @GetMapping("/modificar/{idArbol}")
-    public String modificar(Arbol categoria, Model model) {
-        categoria=categoriaService.getArbol(categoria);
-        model.addAttribute("categoria", categoria);
-        return "/categoria/modifica";
+    public String modificar(Arbol arbol, Model model) {
+        arbol=arbolService.getArbol(arbol);
+        model.addAttribute("arbol", arbol);
+        return "/arbol/modifica";
     }
 }
