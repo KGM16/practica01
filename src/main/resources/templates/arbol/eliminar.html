@@ -1,15 +1,47 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Vivero</title>
     </head>
     <body>
-        <div>TODO write content</div>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <section th:fragment="eliminarArbol">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <form th:action="@{/arbol/eliminar}" th:object="${arbol}" method="POST" class="was-validated">
+                            <input type="hidden" name="idArbol" th:field="*{idArbol}"/>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>¿Seguro que desea eliminar este árbol?</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="nombreComun">Nombre Común</label>
+                                        <input type="text" class="form-control" name="nombreComun" th:field="*{nombreComun}" disabled="true"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tipoFlor">Tipo de Flor</label>
+                                        <input type="text" class="form-control" name="tipoFlor" th:field="*{tipoFlor}" disabled="true"/>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </button>
+                                    <a th:href="@{/arbol/listado}" class="btn btn-secondary">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>

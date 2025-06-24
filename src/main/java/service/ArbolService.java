@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package service;
 
 
@@ -19,11 +15,11 @@ public class ArbolService {
 
     //Se define un único objeto para todos los ususarios y se crea automáticamente
     @Autowired
-    private ArbolRepository categoriaRepository;
+    private ArbolRepository arbolRepository;
 
     @Transactional(readOnly = true)
     public List<Arbol> getArbols(boolean activo) {
-        var lista = categoriaRepository.findAll();
+        var lista = arbolRepository.findAll();
 
         //Se hace el filtro si sólo se desean las categorías activas...
         if (activo) {
@@ -33,20 +29,20 @@ public class ArbolService {
     }
     
     @Transactional(readOnly = true)
-    public Arbol getArbol(Arbol categoria) {
+    public Arbol getArbol(Arbol arbol) {
         
-        return categoriaRepository.findById(categoria.getIdArbol())
+        return arbolRepository.findById(arbol.getIdArbol())
                 .orElse(null);
     }
     
 
     @Transactional
-    public void save(Arbol categoria) {
-        categoriaRepository.save(categoria);
+    public void save(Arbol arbol) {
+        arbolRepository.save(arbol);
     }
     
     @Transactional
-    public void delete(Arbol categoria) {
-        categoriaRepository.delete(categoria);
+    public void delete(Arbol arbol) {
+        arbolRepository.delete(arbol);
     }
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import domain.Arbol;
@@ -18,36 +14,49 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/categoria")
+@RequestMapping("/arbol")
 public class ArbolController {
 
     @Autowired
-    private ArbolService categoriaService;
+    private ArbolService arbolService;
 
     @GetMapping("/listado")
     public String listado(Model model) {
-        var lista = categoriaService.getArbols(false);
-        model.addAttribute("categorias", lista);
-        model.addAttribute("totalArbols", lista.size());
-        return "/categoria/listado";
+        var lista = arbolService.getArbols(false);
+        model.addAttribute("arboles", lista);
+        model.addAttribute("totalArboles", lista.size());
+        return "/arbol/listado";
+    }
+
+    @GetMapping("/nuevo")
+    public String arbolNuevo(Arbol arbol) {
+        return "/arbol/crear";
     }
 
     @PostMapping("/guardar")
-    public String guardar(Arbol categoria, @RequestParam("imagenFile") MultipartFile imagenFile) {
-        categoriaService.save(categoria);
-        return "redirect:/categoria/listado";
+    public String arbolGuardar(Arbol arbol, @RequestParam("imagenFile") MultipartFile imagenFile) {
+        // Lógica para guardar la imagen si es necesario
+        arbolService.save(arbol);
+        return "redirect:/arbol/listado";
     }
 
     @GetMapping("/eliminar/{idArbol}")
-    public String eliminar(Arbol categoria) {
-        categoriaService.delete(categoria);
-        return "redirect:/categoria/listado";
+    public String arbolEliminar(Arbol arbol, Model model) {
+        arbol = arbolService.getArbol(arbol);
+        model.addAttribute("arbol", arbol);
+        return "/arbol/eliminar";
     }
     
+    @PostMapping("/eliminar")
+    public String arbolEliminar(Arbol arbol) {
+        arbolService.delete(arbol);
+        return "redirect:/arbol/listado";
+    }
+
     @GetMapping("/modificar/{idArbol}")
-    public String modificar(Arbol categoria, Model model) {
-        categoria=categoriaService.getArbol(categoria);
-        model.addAttribute("categoria", categoria);
-        return "/categoria/modifica";
+    public String arbolModificar(Arbol arbol, Model model) {
+        arbol = arbolService.getArbol(arbol);
+        model.addAttribute("arbol", arbol);
+        return "/arbol/actualizar";
     }
 }
