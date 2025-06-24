@@ -22,5 +22,5 @@ public class Arbol implements Serializable {
     private double durezaMadera;
     private double alturaPromedio;
     private String rutaImg;
-
+    private boolean activo;
 }

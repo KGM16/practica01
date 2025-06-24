@@ -15,6 +15,7 @@ CREATE TABLE arbol (
     tipo_flor VARCHAR(100),
     dureza_madera DECIMAL(5, 2),
     altura_promedio DECIMAL(6, 2),
+    activo BOOLEAN,
     ruta_img VARCHAR(255) --dejo esto asi porque no se que tan larga puede ser la ruta
 );
 
@@ -29,9 +30,9 @@ FLUSH PRIVILEGES;
 ========================================================================================================
 */
 
-INSERT INTO arbol (nombre_comun, tipo_flor, dureza_madera, altura_promedio, ruta_img) VALUES
-('Roble', 'Sin flor visible', 85.5, 25.50, 'nose.png'),
-('Pino', 'Conos', 65.0, 30.00, 'nose.png'),
-('Arce', 'Flores pequeñas', 75.3, 15.25, 'nose.png'),
-('Cedro', 'Sin flor visible', 90.1, 40.75, 'nose.png'),
-('Abeto', 'Conos', 70.2, 35.50, 'nose.png');
+INSERT INTO arbol (nombre_comun, tipo_flor, dureza_madera, altura_promedio, activo, ruta_img) VALUES
+('Roble', 'Sin flor visible', 85.5, 25.50, TRUE, 'nose.png'),
+('Pino', 'Conos', 65.0, 30.00, TRUE, 'nose.png'),
+('Arce', 'Flores pequeñas', 75.3, 15.25, TRUE, 'nose.png'),
+('Cedro', 'Sin flor visible', 90.1, 40.75, TRUE, 'nose.png'),
+('Abeto', 'Conos', 70.2, 35.50, TRUE, 'nose.png');
