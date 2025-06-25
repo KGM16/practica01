@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package com.practica01.controller;
 
-import domain.Arbol;
-import service.ArbolService;
+import com.practica01.domain.Arbol;
+import com.practica01.service.ArbolService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class ArbolController {
 
     @PostMapping("/guardar")
     public String guardar(Arbol arbol, @RequestParam("imagenFile") MultipartFile imagenFile) {
-        arbolService.save(arbol);
+        arbolService.save(arbol, imagenFile);
         return "redirect:/arbol/listado";
     }
 
