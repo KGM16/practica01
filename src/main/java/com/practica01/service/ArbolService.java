@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service;
+package com.practica01.service;
 
 
-import domain.Arbol;
-import repository.ArbolRepository;
+import com.practica01.domain.Arbol;
+import com.practica01.repository.ArbolRepository;
 
 
 import java.util.List;
