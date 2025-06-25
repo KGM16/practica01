@@ -1,4 +1,4 @@
-package practica01.practica01;
+package com.practica01;
 
 
 import java.util.Locale;

@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Actualizar Árbol</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="container mt-5">
+            <h2>Actualizar Árbol</h2>
+            <form th:action="@{/arbol/guardar}" th:object="${arbol}" method="post" enctype="multipart/form-data">
+                <input type="hidden" th:field="*{idArbol}" />
+
+                <div class="mb-3">
+                    <label for="nombreComun" class="form-label">Nombre Común</label>
+                    <input type="text" th:field="*{nombreComun}" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="tipoFlor" class="form-label">Tipo de Flor</label>
+                    <input type="text" th:field="*{tipoFlor}" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="durezaMadera" class="form-label">Dureza de la Madera</label>
+                    <input type="text" th:field="*{durezaMadera}" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="imagen" class="form-label">Imagen del Árbol</label>
+                    <input type="file" name="imagenFile" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a th:href="@{/arbol/listado}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
     </body>
 </html>
